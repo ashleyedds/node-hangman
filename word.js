@@ -3,7 +3,6 @@ var Letter = require('./letter.js');
 function Word(wordTarget) {
 
     this.wordTarget = wordTarget;
-    this.lettersInWord = [];
     this.wordCorrect = false;
 
     this.getLetters = function(){
