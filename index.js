@@ -5,6 +5,7 @@ var Word = require("./word.js");
 var Letter = require('./letter.js');
 
 var letterGuesses = [];
+var gameWord = "";
 
 var wordList = ["apline skiing", "biathlon", "bobsledding", "cross country skiing", "curling", "figure skating", "freestyle skating", "hockey", "luge", "nordic combined", "short track speed skating", "skeleton", "ski jumping", "snowboarding", "speed skating"];
 
@@ -22,8 +23,8 @@ var game = {
 
         console.log("Guesses left: " + this.remainingGuesses + "\n\n");
 
-        var gameWord = new Word(targetWord);
-        gameWord.getLetters();
+        gameWord = new Word(targetWord);
+        // gameWord.getLetters();
 
         getUserGuess();
 
@@ -56,11 +57,13 @@ function getUserGuess() {
             } else {
                 letterGuesses.push(userLetter);
 
-                var checkGuess = new Letter(userLetter);
-                console.log(checkGuess.checkLetter(checkGuess));
+                console.log("test " + gameWord.letters[0].letter);
 
+                console.log("test 2 " + gameWord.checkGuess(userLetter));
                 // var letterInWord = Word.displayWord.checkLetter(userLetter);
                 // console.log("This worked!" + game.gameWord.checkLetter(userInput));
+
+
 
                 //I've spared you the struggle from this point. Had I been able to access the checkLetter() function waaayyy back in my letter.js file, the logic would have proceeded as thus:
 
@@ -79,4 +82,5 @@ function getUserGuess() {
         })
     }
 }
+
 game.startGame();
