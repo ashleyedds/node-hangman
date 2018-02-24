@@ -24,7 +24,7 @@ var game = {
         console.log("Guesses left: " + this.remainingGuesses + "\n\n");
 
         gameWord = new Word(targetWord);
-        // gameWord.getLetters();
+        gameWord.getLetters();
 
         getUserGuess();
 
@@ -57,9 +57,9 @@ function getUserGuess() {
             } else {
                 letterGuesses.push(userLetter);
 
-                console.log("test " + gameWord.letters[0].letter);
-
-                console.log("test 2 " + gameWord.checkGuess(userLetter));
+                gameWord.checkGuess(userLetter);
+                console.log("This worked!");
+                gameWord.getLetters();
                 // var letterInWord = Word.displayWord.checkLetter(userLetter);
                 // console.log("This worked!" + game.gameWord.checkLetter(userInput));
 
