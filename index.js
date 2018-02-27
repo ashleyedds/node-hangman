@@ -58,8 +58,8 @@ function getUserGuess() {
                 letterGuesses.push(userLetter);
 
                 gameWord.checkGuess(userLetter);
-                console.log("This worked!");
-                gameWord.getLetters();
+                // gameWord.getLetters();
+
                 // var letterInWord = Word.displayWord.checkLetter(userLetter);
                 // console.log("This worked!" + game.gameWord.checkLetter(userInput));
 
