@@ -28,6 +28,7 @@ function Word(wordTarget) {
     this.remainingLetters = this.wordTarget.length;
 
     this.checkGuess = function(guess) {
+        displayWord = "";
         for (var j = 0; j < letters.length; j++){
         var word = letters[j];
         word.checkLetter(guess);
