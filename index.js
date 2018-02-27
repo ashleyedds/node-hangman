@@ -2,7 +2,6 @@ var inquirer = require("inquirer");
 var isLetter = require("is-letter");
 
 var Word = require("./word.js");
-var Letter = require('./letter.js');
 
 var letterGuesses = [];
 var gameWord = "";
@@ -50,11 +49,16 @@ function getUserGuess() {
                 console.log("Letters guessed: " + letterGuesses + "\n");
 
                 getUserGuess();
-            } else if (isLetter(userLetter) === true && letterGuesses.indexOf(userLetter) != -1) {
+                return;
+            }
+            
+            if (isLetter(userLetter) === true && letterGuesses.indexOf(userLetter) != -1) {
                 console.log("Gosh darn! You already guessed " + userLetter + " Try again please.");
                 console.log("Guesses left: " + game.remainingGuesses + "\n");
                 console.log("Letters guessed: " + letterGuesses + "\n");
-            } else {
+                return;
+            } 
+            
                 letterGuesses.push(userLetter);
 
                 gameWord.checkGuess(userLetter);
@@ -78,7 +82,7 @@ function getUserGuess() {
                 //PS: sorry I failed you.
 
 
-            }
+            
         })
     }
 }

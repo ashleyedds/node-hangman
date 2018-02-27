@@ -31,22 +31,13 @@ function Word(wordTarget) {
         for (var j = 0; j < letters.length; j++){
         var word = letters[j];
         word.checkLetter(guess);
-        console.log(word);
-        if(word.display === true){
-            let renderBlanks = word.letterShow();
+        // console.log(word.display);
+        let renderBlanks = word.letterShow();
         let combineWord = renderBlanks.toString();
             displayWord = displayWord.concat(combineWord + " ");
             if (j === wordTarget.length - 1) {
-                console.log(displayWord);
+                showString();
             }
-        }
-        // console.log(word.display);
-        // let renderBlanks = word.letterShow();
-        // let combineWord = renderBlanks.toString();
-        //     displayWord = displayWord.concat(combineWord + " ");
-        //     if (j === wordTarget.length - 1) {
-        //         showString();
-        //     }
         }
 
         function showString() {
