@@ -2,6 +2,7 @@ var Letter = require('./letter.js');
 
 var letters = [];
 var displayWord = "";
+var correctGuesses = [];
 
 function Word(wordTarget) {
 
@@ -25,34 +26,46 @@ function Word(wordTarget) {
         }
     };
 
-    this.remainingLetters = this.wordTarget.length;
-
-    this.checkGuess = function(guess) {
+    this.checkGuess = function (guess) {
         displayWord = "";
-        for (var j = 0; j < letters.length; j++){
-        var word = letters[j];
-        word.checkLetter(guess);
-        // console.log(word.display);
-        let renderBlanks = word.letterShow();
-        let combineWord = renderBlanks.toString();
+        for (var j = 0; j < letters.length; j++) {
+            var word = letters[j];
+            // console.log(word);
+            word.checkLetter(guess);
+            let renderBlanks = word.letterShow();
+            let combineWord = renderBlanks.toString();
+
             displayWord = displayWord.concat(combineWord + " ");
             if (j === wordTarget.length - 1) {
                 showString();
             }
+
+            letters.every(this.checkForWin());
+            
         }
 
         function showString() {
             console.log(displayWord);
         }
 
-        };
-    
-
-    this.checkForWin = function () {
-        if (this.remainingLetters === 0) {
-            this.wordCorrect = true;
-        }
     };
+
+
+//     this.checkForWin = function () {
+//         for (var j = 0; j < letters.length; j++) {
+//             var word = letters[j];
+//         if (word.display === true) {
+//             console.log("Win!");
+//         }
+//     }
+// };
+
+    // this.logWin = function(){
+    //     letters.every(this.checkForWin());
+    //     return;
+    // };
+
+
 };
 
 module.exports = Word;

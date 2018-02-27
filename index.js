@@ -42,7 +42,7 @@ function getUserGuess() {
             }
         ]).then(function (userInput) {
             var userLetter = userInput.letter.toLowerCase();
-
+            let guessArray = [];
             if (isLetter(userLetter) === false) {
                 console.log("Oops, " + userLetter + " is not a letter. Try again.\n");
                 console.log("Guesses left: " + game.remainingGuesses + "\n");
@@ -56,35 +56,24 @@ function getUserGuess() {
                 console.log("Gosh darn! You already guessed " + userLetter + " Try again please.");
                 console.log("Guesses left: " + game.remainingGuesses + "\n");
                 console.log("Letters guessed: " + letterGuesses + "\n");
+
+                getUserGuess();
                 return;
             } 
             
                 letterGuesses.push(userLetter);
 
                 gameWord.checkGuess(userLetter);
-                // gameWord.getLetters();
-
-                // var letterInWord = Word.displayWord.checkLetter(userLetter);
-                // console.log("This worked!" + game.gameWord.checkLetter(userInput));
-
-
-
-                //I've spared you the struggle from this point. Had I been able to access the checkLetter() function waaayyy back in my letter.js file, the logic would have proceeded as thus:
-
-                //some function to magically move through word.js to letter.js to check for letter true vs letter false to display the correct letter rather than the underscore
-
-                //some function to render the new display with the blanks and the correctly guessed letters, and re-initialiizing the getUserGuess function to continue the inquirer prompts
-
-                //if remainingGuesses === 0 : awww sorry, you loose, re-initialize startGame function for a new word
-
-                //if remainingLetters === 0 : hoorraay! you did better than I did finishing this assignment. Gold medal for you. Use inquirer to ask if user wants to play again. If yes, re-initialze startGame to play again with a new random word, if now, console.log a goodbye, thanks for playing message
-
-                //PS: sorry I failed you.
-
-
+                gameWord.logWin();
+                getUserGuess();        
             
         })
     }
 }
 
 game.startGame();
+
+
+//Remaining game logic:
+//Check for win 
+//Check for lose as player incorrectly guesses and looses remaining plays

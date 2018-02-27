@@ -16,6 +16,7 @@ var Letter = function(letterInput) {
     this.checkLetter = function(userGuess) {
         if(userGuess === this.letter) {
             this.display = true;
+            return this.display;
         }
     }
 };
