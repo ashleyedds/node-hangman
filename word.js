@@ -2,10 +2,9 @@ var Letter = require('./letter.js');
 
 var letters = [];
 var displayWord = "";
-var correctGuesses = [];
 
 function Word(wordTarget) {
-
+    this.correctGuesses = [];
     this.wordTarget = wordTarget;
     this.wordCorrect = false;
 
@@ -40,7 +39,10 @@ function Word(wordTarget) {
                 showString();
             }
 
-            letters.every(this.checkForWin());
+            // if (wordTarget.length === word.letterArray.length){
+            //     console.log("WIN!")
+            //     return
+            // }
             
         }
 

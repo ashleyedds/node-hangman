@@ -64,7 +64,14 @@ function getUserGuess() {
                 letterGuesses.push(userLetter);
 
                 gameWord.checkGuess(userLetter);
-                gameWord.logWin();
+                // gameWord.logWin();
+
+                console.log(gameWord.correctGuesses.length);
+                console.log(gameWord.wordTarget.length)
+
+                // if (gameWord.correctGuesses.length === gameWord.wordTarget.length) {
+                //     console.log("You Win!");
+                // };
                 getUserGuess();        
             
         })
