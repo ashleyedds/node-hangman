@@ -65,10 +65,6 @@ function getUserGuess() {
             letterGuesses.push(userLetter);
 
             gameWord.checkGuess(userLetter);
-            // gameWord.logWin();
-
-            // console.log(gameWord.letters);
-            // console.log(guessArray);
 
             for (let i = 0; i < gameWord.letters.length; i++) {
                 if (gameWord.letters[i].display === true) {
@@ -77,13 +73,11 @@ function getUserGuess() {
                         console.log("Win!");
                         game.startGame();
                         letterGuesses = [];
+                        return;
                     }
                 }
             }
 
-            // if (gameWord.correctGuesses.length === gameWord.wordTarget.length) {
-            //     console.log("You Win!");
-            // };
             getUserGuess();
 
         })
