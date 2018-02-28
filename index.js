@@ -14,9 +14,7 @@ var game = {
 
     startGame: function () {
 
-        var targetWord = wordList[Math.floor(Math.random() * wordList.length)]
-
-        console.log(targetWord);
+        var targetWord = wordList[Math.floor(Math.random() * wordList.length)];
 
         console.log("Welcome to Node Hangman: Winter Olympics Edition! See if you can go for gold and correctly guess the sporting event.\n")
 
@@ -71,9 +69,9 @@ function getUserGuess() {
                     guessArray.push("true");
                     if (gameWord.letters.length === guessArray.length) {
                         console.log("Wow! A gold medal for you!");
-                        game.startGame();
                         letterGuesses = [];
                         game.remainingGuesses = 10;
+                        game.startGame();
                         return;
                     }
                 }

@@ -1,7 +1,6 @@
 var Letter = function(letterInput) {
     this.letter = letterInput;
     this.display = false;
-    // this.letterArray = [];
 
     this.letterShow = function() {
         if(this.letter == ' '){
@@ -17,18 +16,9 @@ var Letter = function(letterInput) {
     this.checkLetter = function(userGuess) {
         if(userGuess === this.letter) {
             this.display = true;
-            // letterArray.push("true");
+
         }
     }
 };
 
 module.exports = Letter;
-
-// var A = new Letter("a");
-// console.log('--------------------');
-// console.log("Underlying Character: " + A.letter);
-// console.log("Guessed? " + A.display);
-// console.log('--------------------');
-// A.checkLetter("b");
-// console.log("Guessed? " + A.display);
-// console.log(A.letterShow());
