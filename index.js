@@ -48,7 +48,7 @@ function getUserGuess() {
                 console.log("Oops, " + userLetter + " is not a letter. Try again.\n");
                 console.log("Guesses left: " + game.remainingGuesses + "\n");
                 console.log("Letters guessed: " + letterGuesses + "\n");
-
+                game.remainingGuesses--;
                 getUserGuess();
                 return;
             }
@@ -57,7 +57,7 @@ function getUserGuess() {
                 console.log("Gosh darn! You already guessed " + userLetter + " Try again please.");
                 console.log("Guesses left: " + game.remainingGuesses + "\n");
                 console.log("Letters guessed: " + letterGuesses + "\n");
-
+                game.remainingGuesses--;
                 getUserGuess();
                 return;
             }
@@ -70,9 +70,10 @@ function getUserGuess() {
                 if (gameWord.letters[i].display === true) {
                     guessArray.push("true");
                     if (gameWord.letters.length === guessArray.length) {
-                        console.log("Win!");
+                        console.log("Wow! A gold medal for you!");
                         game.startGame();
                         letterGuesses = [];
+                        game.remainingGuesses = 10;
                         return;
                     }
                 }
@@ -81,6 +82,11 @@ function getUserGuess() {
             getUserGuess();
 
         })
+    } else {
+        console.log("Aw too bad, you didn't make the podium this year. Better luck next time.");
+        game.remainingGuesses = 10;
+        letterGuesses = [];
+        game.startGame();
     }
 }
 
