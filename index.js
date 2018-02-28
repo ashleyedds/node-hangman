@@ -17,11 +17,12 @@ var game = {
         var targetWord = wordList[Math.floor(Math.random() * wordList.length)]
 
         console.log(targetWord);
-        
+
         console.log("Welcome to Node Hangman: Winter Olympics Edition! See if you can go for gold and correctly guess the sporting event.\n")
 
         console.log("Guesses left: " + this.remainingGuesses + "\n\n");
 
+        gameWord = "";
         gameWord = new Word(targetWord);
         gameWord.getLetters();
 
@@ -51,7 +52,7 @@ function getUserGuess() {
                 getUserGuess();
                 return;
             }
-            
+
             if (isLetter(userLetter) === true && letterGuesses.indexOf(userLetter) != -1) {
                 console.log("Gosh darn! You already guessed " + userLetter + " Try again please.");
                 console.log("Guesses left: " + game.remainingGuesses + "\n");
@@ -59,21 +60,32 @@ function getUserGuess() {
 
                 getUserGuess();
                 return;
-            } 
-            
-                letterGuesses.push(userLetter);
+            }
 
-                gameWord.checkGuess(userLetter);
-                // gameWord.logWin();
+            letterGuesses.push(userLetter);
 
-                console.log(gameWord.correctGuesses.length);
-                console.log(gameWord.wordTarget.length)
+            gameWord.checkGuess(userLetter);
+            // gameWord.logWin();
 
-                // if (gameWord.correctGuesses.length === gameWord.wordTarget.length) {
-                //     console.log("You Win!");
-                // };
-                getUserGuess();        
-            
+            // console.log(gameWord.letters);
+            // console.log(guessArray);
+
+            for (let i = 0; i < gameWord.letters.length; i++) {
+                if (gameWord.letters[i].display === true) {
+                    guessArray.push("true");
+                    if (gameWord.letters.length === guessArray.length) {
+                        console.log("Win!");
+                        game.startGame();
+                        letterGuesses = [];
+                    }
+                }
+            }
+
+            // if (gameWord.correctGuesses.length === gameWord.wordTarget.length) {
+            //     console.log("You Win!");
+            // };
+            getUserGuess();
+
         })
     }
 }
@@ -84,3 +96,4 @@ game.startGame();
 //Remaining game logic:
 //Check for win 
 //Check for lose as player incorrectly guesses and looses remaining plays
+//I'm sorry I failed you. I did my best.

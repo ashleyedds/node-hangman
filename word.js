@@ -1,17 +1,18 @@
 var Letter = require('./letter.js');
 
-var letters = [];
 var displayWord = "";
 
 function Word(wordTarget) {
+    this.letters = [];
     this.correctGuesses = [];
     this.wordTarget = wordTarget;
     this.wordCorrect = false;
 
     this.getLetters = function () {
+        displayWord = "";
         for (var i = 0; i < wordTarget.length; i++) {
             var targetLetter = new Letter(this.wordTarget[i]);
-            letters.push(targetLetter);
+            this.letters.push(targetLetter);
             let renderBlanks = targetLetter.letterShow();
             let combineWord = renderBlanks.toString();
             displayWord = displayWord.concat(combineWord + " ");
@@ -27,8 +28,8 @@ function Word(wordTarget) {
 
     this.checkGuess = function (guess) {
         displayWord = "";
-        for (var j = 0; j < letters.length; j++) {
-            var word = letters[j];
+        for (var j = 0; j < this.letters.length; j++) {
+            var word = this.letters[j];
             // console.log(word);
             word.checkLetter(guess);
             let renderBlanks = word.letterShow();
@@ -53,14 +54,14 @@ function Word(wordTarget) {
     };
 
 
-//     this.checkForWin = function () {
-//         for (var j = 0; j < letters.length; j++) {
-//             var word = letters[j];
-//         if (word.display === true) {
-//             console.log("Win!");
-//         }
-//     }
-// };
+    this.checkForWin = function () {
+        for (var j = 0; j < letters.length; j++) {
+            var word = letters[j];
+        if (word.display === true) {
+            console.log("Win!");
+        }
+    }
+};
 
     // this.logWin = function(){
     //     letters.every(this.checkForWin());
