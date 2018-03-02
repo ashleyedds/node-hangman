@@ -5,10 +5,16 @@ Get ready to go for gold! Try to guess the Olympic event before your run out of 
 <h3>Before you get started</h3>
 <p><i>Make sure you download the following packages</i></p>
 <ul>
-<li>NPM Inquirer package
-    <li><a href="https://www.npmjs.com/package/inquirer">Click here for more info</a></li></li>
-<li>NPM is-letter package
-    <li><a href="https://www.npmjs.com/package/is-letter">Click here for more info</a></li></li>
+<li>NPM Inquirer package</li>
+    <li style="list-style-type:none">
+        <ul>
+            <li><a href="https://www.npmjs.com/package/inquirer">Click here for more info</a></li>
+    </li>
+<li>NPM is-letter package</li>
+    <li style="list-style-type:none">
+        <ul>
+            <li><a href="https://www.npmjs.com/package/is-letter">Click here for more info</a></li>
+        </li>
 </ul>
 
 <h3>To play:</h3>
