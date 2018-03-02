@@ -9,12 +9,14 @@ Get ready to go for gold! Try to guess the Olympic event before your run out of 
     <li style="list-style-type:none">
         <ul>
             <li><a href="https://www.npmjs.com/package/inquirer">Click here for more info</a></li>
+        </ul>
     </li>
 <li>NPM is-letter package</li>
     <li style="list-style-type:none">
         <ul>
             <li><a href="https://www.npmjs.com/package/is-letter">Click here for more info</a></li>
-        </li>
+        </ul>
+    </li>
 </ul>
 
 <h3>To play:</h3>
