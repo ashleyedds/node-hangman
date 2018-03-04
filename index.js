@@ -42,6 +42,23 @@ function getUserGuess() {
         ]).then(function (userInput) {
             var userLetter = userInput.letter.toLowerCase();
             let guessArray = [];
+
+            function checkForWin() {
+                for (let i = 0; i < gameWord.letters.length; i++) {
+                    if (gameWord.letters[i].display === true) {
+                        guessArray.push("true");
+                        if (gameWord.letters.length === guessArray.length) {
+                            console.log("Wow! A gold medal for you!");
+                            return true;
+                        }
+                    }
+                }
+            }
+
+
+
+
+
             if (isLetter(userLetter) === false) {
                 console.log("Oops, " + userLetter + " is not a letter. Try again.\n");
                 console.log("Guesses left: " + game.remainingGuesses + "\n");
@@ -52,34 +69,43 @@ function getUserGuess() {
             }
 
             if (isLetter(userLetter) === true && letterGuesses.indexOf(userLetter) != -1) {
+                game.remainingGuesses--;
                 console.log("Gosh darn! You already guessed " + userLetter + " Try again please.");
                 console.log("Guesses left: " + game.remainingGuesses + "\n");
                 console.log("Letters guessed: " + letterGuesses + "\n");
-                game.remainingGuesses--;
                 getUserGuess();
                 return;
             }
 
             letterGuesses.push(userLetter);
 
-            gameWord.checkGuess(userLetter);
+            if (gameWord.rightOrWrong(userLetter) === false) {
+                console.log("Aww too bad. The judges aren't going to like that move.");
+                game.remainingGuesses--;
+                console.log("Guesses left: " + game.remainingGuesses + "\n");
+                console.log("Letters guessed: " + letterGuesses + "\n");
 
-            for (let i = 0; i < gameWord.letters.length; i++) {
-                if (gameWord.letters[i].display === true) {
-                    guessArray.push("true");
-                    if (gameWord.letters.length === guessArray.length) {
-                        console.log("Wow! A gold medal for you!");
-                        letterGuesses = [];
-                        game.remainingGuesses = 10;
-                        game.startGame();
-                        return;
-                    }
-                }
+            } else {
+                console.log("Nice! 10 points from the judges.");
+                console.log("Guesses left: " + game.remainingGuesses + "\n");
+                console.log("Letters guessed: " + letterGuesses + "\n");
             }
 
-            getUserGuess();
+
+            gameWord.checkGuess(userLetter);
+            if (checkForWin() === true) {
+                letterGuesses = [];
+                game.remainingGuesses = 10;
+                game.startGame()
+                return;
+            } else {
+                getUserGuess();
+                return;
+            }
+
 
         })
+
     } else {
         console.log("Aw too bad, you didn't make the podium this year. Better luck next time.");
         game.remainingGuesses = 10;
